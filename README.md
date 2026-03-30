@@ -8,6 +8,7 @@
 - мятный акцент сделан ярче;
 - важные, узнаваемые для пользователя фразы подсвечены мятным только в заголовках;
 - мобильная версия ужата и выровнена: компактнее шапка, спокойнее интервалы, лучше читаются заголовки и карточки.
+- зеркало сайта поднято на `Vercel`: [site-gamma-nine-66.vercel.app](https://site-gamma-nine-66.vercel.app).
 
 ## Стек
 
@@ -84,6 +85,20 @@ railway up
 ```
 
 Если проект уже привязан к сервису, Railway подхватит `npm run start` из [`railway.json`](./railway.json).
+
+## Зеркало в Vercel
+
+Дополнительно поднято зеркало на `Vercel`:
+
+- production alias: [site-gamma-nine-66.vercel.app](https://site-gamma-nine-66.vercel.app)
+- inspector: [vercel.com/alexs-projects-bf395807/site/A1wSTqfZwmbfH6MGKLn4aTBdVCze](https://vercel.com/alexs-projects-bf395807/site/A1wSTqfZwmbfH6MGKLn4aTBdVCze)
+
+Что важно сейчас:
+
+- это именно зеркало, основной рабочий деплой для проекта остаётся в `Railway`;
+- зеркало поднято через `vercel deploy --prod --yes --scope alexs-projects-bf395807`;
+- автоматическая привязка GitHub-репозитория `roherozorroalex/udaya-landing` в `Vercel` не сработала, поэтому авто-деплой из GitHub пока не настроен;
+- локально `Vercel` добавил `.vercel` в [`.gitignore`](./.gitignore), чтобы служебные файлы линковки не попадали в репозиторий.
 
 ## Что проверить после деплоя
 
