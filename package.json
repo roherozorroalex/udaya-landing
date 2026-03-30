@@ -1,0 +1,14 @@
+{
+  "name": "udaya-landing",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Static landing page for Udaya body oils.",
+  "scripts": {
+    "dev": "serve -l tcp://0.0.0.0:${PORT:-3000} .",
+    "start": "serve -l tcp://0.0.0.0:${PORT:-3000} .",
+    "test": "node scripts/smoke.mjs"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
