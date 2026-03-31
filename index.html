@@ -1,24 +1,1422 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Udaya Landing</title>
-    <style>
-        /* Other CSS styles */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        /* Fixing CSS variables */
-        .example-class {
-            color: var(--accent);
-            text-shadow: 0 0 24px var(--accent-glow);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Udaya — Body Oils For State Shifts</title>
+  <meta
+    name="description"
+    content="Udaya creates aromatic body oils for five precise states: Morning, Focus, Unwind, Sleep, and Radiance. A quiet ritual for changing how the day feels."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Serif+Display:ital@0;1&family=Public+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+  <style>
+    :root {
+      --bg: #060606;
+      --bg-soft: #0d0c0a;
+      --bg-panel: rgba(248, 242, 234, 0.026);
+      --bg-panel-strong: rgba(248, 242, 234, 0.042);
+      --line: rgba(248, 242, 234, 0.12);
+      --line-soft: rgba(248, 242, 234, 0.08);
+      --text: #f0ebe3;
+      --text-strong: #fcf8f3;
+      --muted: rgba(240, 235, 227, 0.78);
+      --muted-soft: rgba(240, 235, 227, 0.44);
+      --accent: #c8fff2;
+      --accent-deep: #8fd5c2;
+      --accent-soft: rgba(200, 255, 242, 0.2);
+      --accent-glow: rgba(200, 255, 242, 0.14);
+      --shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
+      --radius-xl: 18px;
+      --radius-lg: 10px;
+      --radius-md: 6px;
+      --container: 1220px;
+      --side-pad: clamp(20px, 4vw, 48px);
+      --section-pad: clamp(92px, 10vw, 164px);
+      --font-display: "DM Serif Display", Georgia, serif;
+      --font-body: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      font-family: var(--font-body);
+      background:
+        radial-gradient(circle at 20% 8%, rgba(169, 216, 203, 0.03), transparent 24%),
+        linear-gradient(180deg, #090909 0%, #060606 48%, #040404 100%);
+      color: var(--text);
+      line-height: 1.5;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.008), rgba(255, 255, 255, 0));
+      opacity: 0.42;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    .site-shell {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .site-shell::before,
+    .site-shell::after {
+      content: none;
+    }
+
+    .container {
+      width: min(calc(100% - (var(--side-pad) * 2)), var(--container));
+      margin: 0 auto;
+    }
+
+    [id] {
+      scroll-margin-top: 112px;
+    }
+
+    .section {
+      position: relative;
+      padding: var(--section-pad) 0;
+    }
+
+    .section + .section {
+      border-top: 1px solid var(--line-soft);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 30px;
+      margin-bottom: 64px;
+    }
+
+    .section-label,
+    .micro-label {
+      margin: 0;
+      color: var(--muted-soft);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .hero-title,
+    .section-title,
+    .quote,
+    .cta-title {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 400;
+      letter-spacing: 0;
+      color: var(--text-strong);
+    }
+
+    .card-title,
+    .state-title,
+    .compare-title,
+    .objection-title,
+    .result-title,
+    .panel-title {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 400;
+      letter-spacing: 0;
+      color: var(--text-strong);
+    }
+
+    .hero-title {
+      max-width: 760px;
+      font-size: clamp(56px, 10vw, 122px);
+      line-height: 1.08;
+    }
+
+    .hero-title span,
+    .section-title span,
+    .quote span,
+    .cta-title span,
+    .card-title span,
+    .state-title span,
+    .compare-title span,
+    .objection-title span,
+    .result-title span,
+    .panel-title span {
+      color: var(--accent);
+      text-shadow: 0 0 24px var(--accent-glow);
+    }
+
+    .section-title {
+      max-width: 720px;
+      font-size: clamp(34px, 4.5vw, 66px);
+      line-height: 1.12;
+    }
+
+    .quote {
+      max-width: 860px;
+      font-size: clamp(34px, 5.2vw, 76px);
+      line-height: 1.14;
+    }
+
+    .cta-title {
+      max-width: 820px;
+      font-size: clamp(34px, 5.4vw, 84px);
+      line-height: 1.1;
+    }
+
+    .body,
+    .panel-copy,
+    .section-intro,
+    .footer-copy {
+      margin: 0;
+      color: rgba(240, 235, 227, 0.64);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .lead {
+      max-width: 620px;
+      margin: 0;
+      color: rgba(252, 248, 243, 0.95);
+      font-size: clamp(18px, 1.7vw, 21px);
+      line-height: 1.9;
+    }
+
+    .section-intro {
+      max-width: 610px;
+    }
+
+    .meta-copy {
+      margin: 0;
+      color: var(--muted-soft);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(12px);
+      background: rgba(6, 6, 6, 0.9);
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      color: var(--text-strong);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px 20px;
+    }
+
+    .nav-links a {
+      color: var(--muted-soft);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 180ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--text-strong);
+    }
+
+    .hero {
+      padding: clamp(40px, 7vw, 88px) 0 var(--section-pad);
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      display: grid;
+      align-content: start;
+      gap: 44px;
+    }
+
+    .launch-note {
+      display: grid;
+      gap: 10px;
+      padding-top: 14px;
+    }
+
+    .launch-kicker {
+      margin: 0;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .launch-copy {
+      margin: 0;
+      max-width: 420px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.84;
+    }
+
+    .signal-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 16px;
+    }
+
+    .signal {
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .signal-value {
+      margin: 0 0 12px;
+      color: var(--text-strong);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .signal-copy {
+      margin: 0;
+      color: rgba(240, 235, 227, 0.68);
+      font-size: 14px;
+      line-height: 1.78;
+    }
+
+    .hero-panel,
+    .card,
+    .state-card,
+    .compare-card,
+    .objection-card,
+    .result-card,
+    .cta-panel {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: rgba(248, 242, 234, 0.022);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-panel,
+    .cta-panel {
+      border-radius: var(--radius-xl);
+    }
+
+    .card,
+    .state-card,
+    .compare-card,
+    .objection-card,
+    .result-card {
+      border-radius: var(--radius-lg);
+    }
+
+    .hero-panel {
+      display: grid;
+      gap: 30px;
+      min-height: 100%;
+      padding: clamp(34px, 3.9vw, 44px);
+    }
+
+    .hero-panel::before,
+    .cta-panel::before {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    .hero-panel::before {
+      right: -120px;
+      top: -90px;
+    }
+
+    .panel-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .panel-title {
+      font-size: 28px;
+      line-height: 1.24;
+    }
+
+    .panel-copy {
+      max-width: 420px;
+    }
+
+    .hero-illustration {
+      width: min(100%, 420px);
+      min-height: 368px;
+      margin: 4px 0 6px;
+      padding: 26px 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(169, 216, 203, 0.14);
+      background: linear-gradient(180deg, #f3eddc 0%, #efe7d6 100%);
+    }
+
+    .hero-illustration svg {
+      display: block;
+      width: min(100%, 182px);
+      height: auto;
+    }
+
+    .arc-grid,
+    .persona-grid,
+    .compare-grid,
+    .objection-grid,
+    .results-grid {
+      display: grid;
+      gap: 28px;
+    }
+
+    .arc-grid,
+    .persona-grid,
+    .compare-grid,
+    .objection-grid,
+    .results-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card,
+    .compare-card,
+    .objection-card,
+    .result-card {
+      padding: 36px 32px;
+      transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        background-color 180ms ease;
+    }
+
+    .card:hover,
+    .compare-card:hover,
+    .objection-card:hover,
+    .result-card:hover,
+    .state-card:hover {
+      transform: none;
+      border-color: rgba(183, 158, 135, 0.16);
+      background: rgba(248, 242, 234, 0.03);
+    }
+
+    .card-number,
+    .state-number,
+    .result-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      margin-bottom: 24px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(169, 216, 203, 0.22);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: rgba(169, 216, 203, 0.04);
+    }
+
+    .card-title,
+    .compare-title,
+    .objection-title,
+    .result-title {
+      margin-bottom: 14px;
+      font-size: 28px;
+      line-height: 1.22;
+    }
+
+    .card-copy,
+    .compare-copy,
+    .objection-copy,
+    .result-copy,
+    .state-copy {
+      margin: 0;
+      color: rgba(240, 235, 227, 0.68);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .split-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+      gap: clamp(48px, 4.8vw, 72px);
+      align-items: start;
+    }
+
+    .principles {
+      display: grid;
+      gap: 24px;
+    }
+
+    .principle {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 28px;
+      padding: 28px 0;
+      border-top: 1px solid var(--line-soft);
+    }
+
+    .principle:last-child {
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .principle .micro-label {
+      padding-top: 4px;
+    }
+
+    .principle-copy {
+      display: grid;
+      gap: 10px;
+    }
+
+    .principle-copy strong {
+      display: block;
+      color: var(--text-strong);
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.6;
+    }
+
+    .principle-copy p {
+      margin: 0;
+      color: rgba(240, 235, 227, 0.66);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .persona-quote {
+      display: grid;
+      gap: 34px;
+      margin-bottom: 50px;
+    }
+
+    .persona-note {
+      max-width: 680px;
+      margin: 0;
+      color: rgba(240, 235, 227, 0.7);
+      font-size: 17px;
+      line-height: 1.92;
+    }
+
+    .states-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 28px 36px;
+      margin-bottom: 48px;
+    }
+
+    .state-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 26px;
+    }
+
+    .state-card {
+      display: grid;
+      gap: 18px;
+      min-height: 100%;
+      padding: 32px 28px 28px;
+      grid-column: span 2;
+      transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        background-color 180ms ease;
+    }
+
+    .state-card:nth-child(4),
+    .state-card:nth-child(5) {
+      grid-column: span 3;
+    }
+
+    .state-card::before {
+      display: none;
+    }
+
+    .state-name {
+      margin: 0;
+      color: var(--muted-soft);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .state-title {
+      font-size: 26px;
+      line-height: 1.22;
+    }
+
+    .state-note {
+      margin-top: auto;
+      color: rgba(240, 235, 227, 0.42);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .objection-grid {
+      margin-top: 26px;
+    }
+
+    .cta {
+      padding-bottom: calc(var(--section-pad) + 10px);
+    }
+
+    .cta-panel {
+      padding: clamp(40px, 4.8vw, 62px);
+    }
+
+    .cta-panel::before {
+      right: -120px;
+      top: -130px;
+    }
+
+    .cta-panel::after {
+      display: none;
+    }
+
+    .cta-copy {
+      max-width: 580px;
+      margin: 28px 0 38px;
+      color: rgba(248, 239, 229, 0.72);
+      font-size: 17px;
+      line-height: 1.84;
+    }
+
+    .footer {
+      padding: 24px 0 42px;
+      border-top: 1px solid var(--line-soft);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px 24px;
+      color: var(--muted-soft);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 1120px) {
+      .hero-layout,
+      .split-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .state-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .state-card,
+      .state-card:nth-child(4),
+      .state-card:nth-child(5) {
+        grid-column: span 1;
+      }
+
+      .signal-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 860px) {
+      .topbar-inner,
+      .states-head,
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .arc-grid,
+      .persona-grid,
+      .compare-grid,
+      .objection-grid,
+      .results-grid,
+      .state-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .principle {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .hero-panel {
+        min-height: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      [id] {
+        scroll-margin-top: 96px;
+      }
+
+      .topbar-inner {
+        gap: 14px;
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px 14px;
+      }
+
+      .nav-links a {
+        font-size: 11px;
+      }
+
+      .hero {
+        padding-top: 20px;
+      }
+
+      .hero-copy,
+      .section-head {
+        gap: 24px;
+      }
+
+      .hero-title {
+        font-size: clamp(44px, 18vw, 72px);
+        line-height: 1.02;
+        letter-spacing: -0.02em;
+      }
+
+      .section-title {
+        font-size: clamp(30px, 10vw, 46px);
+      }
+
+      .quote,
+      .cta-title {
+        font-size: clamp(32px, 10vw, 48px);
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .section-head,
+      .persona-quote,
+      .states-head {
+        margin-bottom: 40px;
+      }
+
+      .lead,
+      .section-intro,
+      .panel-copy,
+      .persona-note,
+      .cta-copy {
+        font-size: 16px;
+        line-height: 1.88;
+      }
+
+      .card-title,
+      .compare-title,
+      .objection-title,
+      .result-title,
+      .state-title {
+        font-size: 24px;
+      }
+
+      .launch-note {
+        gap: 6px;
+      }
+
+      .signal-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .card,
+      .compare-card,
+      .objection-card,
+      .result-card,
+      .state-card {
+        padding: 24px;
+      }
+
+      .cta-panel {
+        padding: 32px 24px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .nav-links {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        gap: 22px;
+      }
+
+      .section {
+        padding: 64px 0;
+      }
+
+      .lead,
+      .section-intro,
+      .persona-note,
+      .cta-copy,
+      .card-copy,
+      .state-copy,
+      .compare-copy,
+      .objection-copy,
+      .result-copy {
+        font-size: 15px;
+        line-height: 1.8;
+      }
+
+      .signal-copy,
+      .launch-copy {
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      .card,
+      .compare-card,
+      .objection-card,
+      .result-card,
+      .state-card,
+      .cta-panel {
+        padding: 22px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* ── TYPOGRAPHY UPGRADE: CORMORANT GARAMOND ── */
+    .hero-title,
+    .section-title,
+    .quote,
+    .cta-title,
+    .card-title,
+    .state-title,
+    .compare-title,
+    .objection-title,
+    .result-title,
+    .panel-title {
+      font-family: "Cormorant Garamond", Georgia, serif;
+    }
+
+    .hero-title {
+      font-size: clamp(60px, 9vw, 116px);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      max-width: 860px;
+    }
+
+    .section-title {
+      font-size: clamp(38px, 5vw, 76px);
+      font-weight: 400;
+    }
+
+    .quote {
+      font-size: clamp(42px, 6vw, 92px);
+      font-weight: 300;
+      line-height: 1.1;
+    }
+
+    .cta-title {
+      font-size: clamp(42px, 6.2vw, 96px);
+      font-weight: 300;
+      line-height: 1.08;
+    }
+
+    .card-title,
+    .compare-title,
+    .objection-title,
+    .result-title {
+      font-size: clamp(26px, 2.4vw, 34px);
+    }
+
+    .state-title {
+      font-size: clamp(22px, 2vw, 30px);
+    }
+
+    /* ── POSITIONING STRIP ── */
+    .positioning-strip {
+      padding: 30px var(--side-pad);
+      border-bottom: 1px solid var(--line-soft);
+      background: rgba(200, 255, 242, 0.028);
+      text-align: center;
+    }
+
+    .positioning-strip p {
+      margin: 0;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(20px, 2.2vw, 28px);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    .positioning-strip em {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    /* ── SCROLL FADE ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 640px) {
+      .hero-title {
+        font-size: clamp(52px, 18vw, 80px);
+      }
+
+      .section-title {
+        font-size: clamp(34px, 10vw, 52px);
+      }
+
+      .quote,
+      .cta-title {
+        font-size: clamp(36px, 10vw, 54px);
+      }
+    }
+
+    /* ── STATE CARD TINTED BACKGROUNDS ── */
+    .state-card {
+      background: var(--state-wash, rgba(248, 242, 234, 0.022));
+    }
+
+    /* ── CARD HOVER LIFT ── */
+    .card:hover,
+    .compare-card:hover,
+    .objection-card:hover,
+    .result-card:hover,
+    .state-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(200, 255, 242, 0.18);
+    }
+
+    /* ── POSITIONING STRIP REFINEMENT ── */
+    .positioning-strip {
+      padding: 44px var(--side-pad);
+      border-top: 1px solid var(--line-soft);
+    }
+
+    /* ── CTA WAITLIST FORM ── */
+    .cta-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 36px;
+      max-width: 500px;
+    }
+
+    .cta-input {
+      flex: 1;
+      min-width: 200px;
+      height: 50px;
+      padding: 0 18px;
+      background: rgba(248, 242, 234, 0.05);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      color: var(--text-strong);
+      font-family: var(--font-body);
+      font-size: 15px;
+      outline: none;
+      transition: border-color 200ms ease;
+    }
+
+    .cta-input::placeholder {
+      color: var(--muted-soft);
+    }
+
+    .cta-input:focus {
+      border-color: rgba(200, 255, 242, 0.3);
+    }
+
+    .cta-btn {
+      height: 50px;
+      padding: 0 28px;
+      background: var(--accent);
+      color: #060606;
+      border: none;
+      border-radius: var(--radius-lg);
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 200ms ease, transform 160ms ease;
+    }
+
+    .cta-btn:hover {
+      opacity: 0.84;
+      transform: translateY(-1px);
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to Udaya Landing</h1>
-    <!-- Other content -->
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <div class="brand">Udaya</div>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#ritual">The oils</a>
+          <a href="#formula">How to use</a>
+          <a href="#moments">Collection</a>
+          <a href="#discovery">Discovery set</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="top">
+        <div class="container hero-layout">
+          <div class="hero-copy">
+            <h1 class="hero-title">
+              Body oils for<br>
+              how you want<br>
+              to <span>feel</span>.
+            </h1>
+            <p class="lead">
+              Perfumed oils for different moments of the day and different versions of you.
+            </p>
+            <div class="launch-note" aria-label="Launch status">
+              <p class="launch-kicker">Launching soon</p>
+              <p class="launch-copy">Discovery Set first. The page stays informational for now, without live product actions.</p>
+            </div>
+            <div class="signal-grid" aria-label="Key product signals">
+              <article class="signal">
+                <p class="signal-value">Close to skin</p>
+                <p class="signal-copy">The scent stays intimate. It lives on your skin, not in the room. Your fragrance, your space.</p>
+              </article>
+              <article class="signal">
+                <p class="signal-value">Body-warm</p>
+                <p class="signal-copy">Oil blooms with your body heat. The scent evolves as you wear it — top, heart, base unfold over hours.</p>
+              </article>
+              <article class="signal">
+                <p class="signal-value">Made for heat</p>
+                <p class="signal-copy">Formulated for Indian heat and humidity. Deep but never heavy. Present but never suffocating.</p>
+              </article>
+              <article class="signal">
+                <p class="signal-value">Feels like yours</p>
+                <p class="signal-copy">Not greasy. Not sticky. A soft glow that feels like your own skin, only more beautiful.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="positioning-strip">
+        <p>Not self-care. <em>Self-return.</em></p>
+      </div>
+
+      <section class="section" id="ritual">
+        <div class="container">
+          <div class=”section-head”>
+            <p class=”section-label”>What you actually get</p>
+            <h2 class=”section-title”>The beauty works on <span>three levels</span></h2>
+            <p class=”section-intro”>
+              Not just fragrance and not just body care. Udaya gives you something that works on skin, on feeling, and on how you inhabit yourself.
+            </p>
+          </div>
+
+          <div class=”arc-grid”>
+            <article class=”card”>
+              <div class=”card-number”>01</div>
+              <h3 class=”card-title”>The <span>sensory</span> layer</h3>
+              <p class=”card-copy”>
+                Sits close to the skin. Body-warm. Intimate. Not a cloud of fragrance for others — a quiet atmosphere for you.
+              </p>
+            </article>
+            <article class=”card”>
+              <div class=”card-number”>02</div>
+              <h3 class=”card-title”>The <span>emotional</span> shift</h3>
+              <p class=”card-copy”>
+                Helps you gather yourself. Soften. Exhale. Focus. Not a claim — a shift you feel within the first minute.
+              </p>
+            </article>
+            <article class=”card”>
+              <div class=”card-number”>03</div>
+              <h3 class=”card-title”>The <span>identity</span> effect</h3>
+              <p class=”card-copy”>
+                You feel more composed. More beautiful to yourself. More like the version of you that you actually want to inhabit.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="formula">
+        <div class="container split-layout">
+          <div class="section-head" style="margin-bottom: 0;">
+            <p class="section-label">How to use</p>
+            <h2 class="section-title">Twenty seconds. That's the <span>whole ritual</span>.</h2>
+            <p class="section-intro">
+              After the shower. Before work. When overwhelmed. Before going out. Before bed. One gesture — wrists, neck, chest — and you've already shifted.
+            </p>
+          </div>
+
+          <div class="principles">
+            <div class="principle">
+              <p class="micro-label">01</p>
+              <div class="principle-copy">
+                <strong>Choose the moment you're in</strong>
+                <p>
+                  Not the scent note. Each oil is made for a specific feeling — you choose by how you want to feel.
+                </p>
+              </div>
+            </div>
+            <div class="principle">
+              <p class="micro-label">02</p>
+              <div class="principle-copy">
+                <strong>Apply to warm skin</strong>
+                <p>
+                  Wrists, neck, décolletage. Pulse points where the oil meets body heat and opens up.
+                </p>
+              </div>
+            </div>
+            <div class="principle">
+              <p class="micro-label">03</p>
+              <div class="principle-copy">
+                <strong>Let it bloom</strong>
+                <p>
+                  Top, heart, base — niche perfumery architecture that unfolds over hours. Intimate, never loud.
+                </p>
+              </div>
+            </div>
+            <div class="principle">
+              <p class="micro-label">04</p>
+              <div class="principle-copy">
+                <strong>Works in your real day</strong>
+                <p>
+                  No candles. No prep time. No separate ritual space. It fits inside the day you already have.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class=”persona-quote”>
+            <p class=”section-label”>You know this</p>
+            <h2 class=”quote”>
+              Not self-care.<br><span>Self-return.</span>
+            </h2>
+            <p class=”persona-note”>
+              For the moments when you want to feel more like yourself — gathered, present, and more at home in your own skin.
+            </p>
+          </div>
+
+          <div class=”persona-grid”>
+            <article class=”card”>
+              <h3 class=”card-title”>Already <span>late inside</span></h3>
+              <p class=”card-copy”>
+                For mornings when your mind is running before your body is ready. The phone starts before you do.
+              </p>
+            </article>
+            <article class=”card”>
+              <h3 class=”card-title”>Jagged from <span>the day</span></h3>
+              <p class=”card-copy”>
+                For workdays that scatter you. Attention split across tabs, calls, and small emergencies — still technically on duty by evening.
+              </p>
+            </article>
+            <article class=”card”>
+              <h3 class=”card-title”>Wanting to <span>gather, not disappear</span></h3>
+              <p class=”card-copy”>
+                For the moment you want to feel more like yourself. Present. Composed. Beautiful in a way that starts from inside.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="moments">
+        <div class="container">
+          <div class="states-head">
+            <div class="section-head" style="margin-bottom: 0;">
+              <p class="section-label">The Collection</p>
+              <h2 class="section-title">One oil for each <span>part of your day</span></h2>
+            </div>
+            <p class="meta-copy">Five oils. Five exact emotional directions.</p>
+          </div>
+
+          <div class="state-grid">
+            <article class="state-card" style="--state-wash: rgba(215, 192, 198, 0.08);">
+              <div class="state-number">01</div>
+              <p class="state-name">Morning</p>
+              <h3 class="state-title"><span>Solar Radiance</span></h3>
+              <p class="state-copy">
+                To gather yourself and enter the day whole — not scattered. Applied after the shower, before the first message.
+              </p>
+              <p class="state-note">Best moment: morning</p>
+            </article>
+            <article class="state-card" style="--state-wash: rgba(206, 190, 196, 0.07);">
+              <div class="state-number">02</div>
+              <p class="state-name">Work · Focus</p>
+              <h3 class="state-title"><span>Focused Clarity</span></h3>
+              <p class="state-copy">
+                To hold shape. Steady attention without tension. When the day breaks into fragments, this brings you back into one clean line.
+              </p>
+              <p class="state-note">Best moment: between tasks</p>
+            </article>
+            <article class="state-card" style="--state-wash: rgba(188, 167, 173, 0.08);">
+              <div class="state-number">03</div>
+              <p class="state-name">Going out · Opening</p>
+              <h3 class="state-title"><span>Open Heart</span></h3>
+              <p class="state-copy">
+                To feel more radiant and open. More present in your warmth. For when you want to arrive — not just show up.
+              </p>
+              <p class="state-note">Best moment: going out</p>
+            </article>
+            <article class="state-card" style="--state-wash: rgba(178, 162, 171, 0.075);">
+              <div class="state-number">04</div>
+              <p class="state-name">Evening</p>
+              <h3 class="state-title"><span>Evening Descent</span></h3>
+              <p class="state-copy">
+                To soften and come down. Not collapse — just land beautifully. The body understands the day is changing.
+              </p>
+              <p class="state-note">Best moment: after work</p>
+            </article>
+            <article class="state-card" style="--state-wash: rgba(225, 206, 212, 0.085);">
+              <div class="state-number">05</div>
+              <p class="state-name">Before sleep</p>
+              <h3 class="state-title"><span>Night Body</span></h3>
+              <p class="state-copy">
+                To sink. Let the day leave your body. Let sleep arrive on its own. Not a hard shutdown — a slow dissolve into quiet.
+              </p>
+              <p class="state-note">Best moment: before bed</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class=”section-head”>
+            <p class=”section-label”>Why not something else</p>
+            <h2 class=”section-title”>It does not behave like a <span>typical body oil</span></h2>
+            <p class=”section-intro”>
+              Udaya doesn't ask you to choose between fragrance, care, and emotional effect. It sits in the space between them.
+            </p>
+          </div>
+
+          <div class=”compare-grid”>
+            <article class=”compare-card”>
+              <h3 class=”compare-title”>Not perfume</h3>
+              <p class=”compare-copy”>
+                Perfume projects outward. Udaya lives on your skin. It's not for the room — it's for how you feel inside your own atmosphere.
+              </p>
+            </article>
+            <article class=”compare-card”>
+              <h3 class=”compare-title”>Not generic body oil</h3>
+              <p class=”compare-copy”>
+                Most body oils are about moisturising. This is about entering a different feeling of yourself. Niche perfumery architecture in an intimate oil format.
+              </p>
+            </article>
+            <article class=”compare-card”>
+              <h3 class=”compare-title”>Not a wellness ritual</h3>
+              <p class=”compare-copy”>
+                No candles. No prep. No separate time. Udaya works inside your real day, not the ideal one from Pinterest.
+              </p>
+            </article>
+          </div>
+
+          <div class=”objection-grid”>
+            <article class=”objection-card”>
+              <h3 class=”objection-title”>”Will it feel heavy in Indian heat?”</h3>
+              <p class=”objection-copy”>
+                Formulated specifically for Indian heat and humidity. Deep but never heavy. Present but never suffocating.
+              </p>
+            </article>
+            <article class=”objection-card”>
+              <h3 class=”objection-title”>”I don't have time for rituals.”</h3>
+              <p class=”objection-copy”>
+                Twenty seconds after the shower. Not a ritual — a gesture. It fits inside what you already do.
+              </p>
+            </article>
+            <article class=”objection-card”>
+              <h3 class=”objection-title”>”Isn't it just scent?”</h3>
+              <p class=”objection-copy”>
+                Beautiful to wear, meaningful to use. Not just “smells nice” — a different feeling of self that builds with each use.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <p class="section-label">Udaya</p>
+            <h2 class="section-title">Not just a beautiful oil. A way to feel more <span>like yourself</span>.</h2>
+          </div>
+
+          <div class="results-grid">
+            <article class="result-card">
+              <div class="result-number">01</div>
+              <h3 class="result-title">More <span>composed</span></h3>
+              <p class="result-copy">
+                You begin from contact rather than rush. Not perfect — just present enough. The day starts from you, not from noise.
+              </p>
+            </article>
+            <article class="result-card">
+              <div class="result-number">02</div>
+              <h3 class="result-title">More beautiful <span>to yourself</span></h3>
+              <p class="result-copy">
+                Not just the outside. The feeling of inhabiting yourself more fully. Coherent, luminous, more at home in your own skin.
+              </p>
+            </article>
+            <article class="result-card">
+              <div class="result-number">03</div>
+              <h3 class="result-title">Elegant <span>transitions</span></h3>
+              <p class="result-copy">
+                Between work and rest, noise and quiet, overstimulation and calm — less abrupt, more graceful. Even on the heaviest days.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section cta" id="discovery">
+        <div class="container">
+          <div class="cta-panel">
+            <p class="section-label">Start here</p>
+            <h2 class="cta-title">The Discovery <span>Set</span></h2>
+            <p class="cta-copy">
+              A set for different parts of the day and different versions of you. Five oils. Live with each one in real moments — and discover which states become part of your own rhythm.
+            </p>
+            <form class="cta-form" onsubmit="this.querySelector('.cta-btn').textContent='You\'re on the list'; this.querySelector('.cta-input').disabled=true; this.querySelector('.cta-btn').disabled=true; return false;">
+              <input class="cta-input" type="email" placeholder="your@email.com" aria-label="Join the Udaya waitlist">
+              <button class="cta-btn" type="submit">Notify me at launch</button>
+            </form>
+            <div class="launch-note" aria-label="Launch status">
+              <p class="launch-kicker">Coming soon — India</p>
+              <p class="launch-copy">Wake · Dry Spine · Soft Gate · Inner Dusk · Deep Rest</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>Udaya</span>
+        <span>Perfumed oils for how you want to feel</span>
+        <span>India, soon</span>
+      </div>
+    </footer>
+  </div>
+  <script>
+    (function () {
+      var sel = '.section-head, .card, .state-card, .compare-card, ' +
+                '.objection-card, .result-card, .principle, ' +
+                '.persona-quote, .cta-panel, .positioning-strip';
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry, i) {
+          if (entry.isIntersecting) {
+            setTimeout(function () { entry.target.classList.add('visible'); }, i * 70);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -24px 0px' });
+      document.querySelectorAll(sel).forEach(function (el) {
+        el.classList.add('fade-up');
+        obs.observe(el);
+      });
+    })();
+  </script>
 </body>
 </html>
