@@ -131,8 +131,6 @@
       display: grid;
       gap: 24px;
       padding: 20px 0;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
     }
 
     .hero-title {
@@ -151,6 +149,28 @@
       color: rgba(240, 235, 227, 0.64);
       font-size: 15px;
       line-height: 1.6;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      width: fit-content;
+      padding: 14px 32px;
+      background: var(--accent);
+      color: #060606;
+      border-radius: var(--radius-lg);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: opacity 200ms ease, transform 160ms ease;
+    }
+
+    .hero-cta:hover {
+      opacity: 0.84;
+      transform: translateY(-1px);
     }
 
     .signal-strip {
@@ -192,7 +212,6 @@
       padding: var(--section-pad) 0;
     }
 
-    .section + .section { border-top: 1px solid var(--line-soft); }
 
     .section-head {
       display: grid;
@@ -431,6 +450,75 @@
       line-height: 1.78;
     }
 
+    /* ── MID CTA (after collection) ── */
+    .mid-cta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 16px 32px;
+      margin-top: 56px;
+      padding: 36px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(248, 242, 234, 0.024);
+      text-align: center;
+    }
+
+    .mid-cta-text {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .mid-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 28px;
+      background: var(--accent);
+      color: #060606;
+      border-radius: var(--radius-lg);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: opacity 200ms ease, transform 160ms ease;
+    }
+
+    .mid-cta-btn:hover {
+      opacity: 0.84;
+      transform: translateY(-1px);
+    }
+
+    /* ── FOUNDER ── */
+    .founder-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px 32px;
+      padding: 32px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-top: 64px;
+    }
+
+    .founder-text {
+      margin: 0;
+      color: rgba(240, 235, 227, 0.64);
+      font-size: 14px;
+      line-height: 1.6;
+      max-width: 640px;
+    }
+
+    .founder-label {
+      margin: 0;
+      color: var(--muted-soft);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
     /* ── CTA ── */
     .cta { padding-bottom: calc(var(--section-pad) + 10px); }
 
@@ -459,6 +547,14 @@
       color: rgba(240, 235, 227, 0.64);
       font-size: 15px;
       line-height: 1.6;
+    }
+
+    .cta-incentive {
+      margin: 12px 0 0;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
     }
 
     .cta-form {
@@ -503,10 +599,59 @@
       transform: translateY(-1px);
     }
 
+    .cta-fine {
+      margin: 0;
+      color: var(--muted-soft);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    /* ── THANK YOU STATE ── */
+    .cta-thankyou {
+      display: grid;
+      gap: 16px;
+      text-align: center;
+    }
+
+    .cta-thankyou-title {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 28px;
+      color: var(--text-strong);
+    }
+
+    .cta-thankyou-copy {
+      margin: 0;
+      color: rgba(240, 235, 227, 0.64);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .cta-thankyou-ig {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      justify-self: center;
+      margin-top: 8px;
+      padding: 10px 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: border-color 180ms ease, color 180ms ease;
+    }
+
+    .cta-thankyou-ig:hover {
+      border-color: var(--accent);
+      color: var(--text-strong);
+    }
+
     /* ── FOOTER ── */
     .footer {
       padding: 24px 0 42px;
-      border-top: 1px solid var(--line-soft);
     }
 
     .footer-inner {
@@ -526,8 +671,6 @@
       align-items: center;
       gap: 16px;
     }
-
-
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1120px) {
@@ -568,6 +711,7 @@
       .signal-strip { flex-direction: column; }
       .card, .state-card { padding: 24px; }
       .cta-panel { padding: 32px 24px; }
+      .mid-cta { padding: 28px 20px; }
     }
 
     @media (max-width: 420px) {
@@ -588,10 +732,10 @@
     <div class="container topbar-inner">
       <div class="brand-group">
         <span class="brand">UDAYA</span>
-        <span class="brand-badge">SOON</span>
+        <span class="brand-badge">SUMMER 2026</span>
       </div>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="#ritual">The oils</a>
+        <a href="#moments">The oils</a>
         <a href="#formula">How to use</a>
         <a href="#moments">Collection</a>
         <a href="#discovery">Discovery set</a>
@@ -608,24 +752,25 @@
       <div class="container">
         <div class="hero-copy">
           <h1 class="hero-title">Body oils for how you want to <span>feel.</span></h1>
-          <p class="hero-sub">Perfumed oils for moments of your day and different versions of you</p>
+          <p class="hero-sub">For overfull mornings, scattered afternoons, and evenings when your mind is still lit</p>
+          <a href="#discovery" class="hero-cta">Get early access</a>
         </div>
         <div class="signal-strip" aria-label="Key product signals">
           <article class="signal">
             <p class="signal-value">Feels part of you</p>
-            <p class="signal-copy">A soft glow that feels like your own skin</p>
+            <p class="signal-copy">Absorbs into skin. No residue, no shine — just warmth.</p>
           </article>
           <article class="signal">
             <p class="signal-value">Close to skin</p>
-            <p class="signal-copy">The scent stays intimate. It lives on your skin, not in the room. Your fragrance, your space.</p>
+            <p class="signal-copy">Not a cloud of fragrance for others. A quiet atmosphere for you.</p>
           </article>
           <article class="signal">
             <p class="signal-value">Made for heat</p>
-            <p class="signal-copy">Deep but never heavy</p>
+            <p class="signal-copy">Designed for warm climate — deep but never heavy on skin</p>
           </article>
           <article class="signal">
             <p class="signal-value">Evolves on skin</p>
-            <p class="signal-copy">The scent evolves as you wear it — top, heart, base unfold over hours</p>
+            <p class="signal-copy">The scent shifts as you wear it — opening bright, settling warm, finishing deep</p>
           </article>
         </div>
       </div>
@@ -637,18 +782,18 @@
         <div class="section-head">
           <p class="section-label">What you actually get</p>
           <h2 class="section-title">Udaya oils work on <span>three levels</span></h2>
-          <p class="section-intro">Not just fragrance and not just body care. Udaya gives you something that works on skin, on feeling, and on how you inhabit yourself.</p>
+          <p class="section-intro">Not just fragrance and not just body care. Something that works on your skin, your mood, and how you feel about yourself.</p>
         </div>
         <div class="arc-grid">
           <article class="card">
             <div class="card-number">01</div>
             <h3 class="card-title">The <span>sensory</span> layer</h3>
-            <p class="card-copy">Sits close to the skin. Body-warm. Intimate. Not a cloud of fragrance for others — a quiet atmosphere for you.</p>
+            <p class="card-copy">Not a cloud of fragrance for others. A quiet atmosphere for you — body-warm, intimate, close to skin.</p>
           </article>
           <article class="card">
             <div class="card-number">02</div>
             <h3 class="card-title">The <span>emotional</span> shift</h3>
-            <p class="card-copy">Helps you gather yourself. Soften. Exhale. Focus. Not a claim — a shift you feel within the first minute.</p>
+            <p class="card-copy">Helps you gather yourself. Soften. Exhale. Focus. A shift you feel within the first minute.</p>
           </article>
           <article class="card">
             <div class="card-number">03</div>
@@ -678,13 +823,13 @@
             <p class="principle-num">02</p>
             <div class="principle-body">
               <strong>Not generic body oil</strong>
-              <p>Most body oils are about only moisturising. This is about entering a different feeling of yourself. Niche perfumery architecture in an intimate oil format.</p>
+              <p>Most body oils are only about moisturising. This is about entering a different feeling of yourself. Built like fine perfume — but worn on skin, not sprayed into the air.</p>
             </div>
           </div>
           <div class="principle principle--panel">
             <p class="principle-num">03</p>
             <div class="principle-body">
-              <strong>Not like long yoga practice</strong>
+              <strong>Not a long yoga practice</strong>
               <p>Twenty seconds after the shower. Not a ritual — a gesture. It fits inside what you already do.</p>
             </div>
           </div>
@@ -700,7 +845,7 @@
             <p class="section-label">The Collection</p>
             <h2 class="section-title">One oil for each <span>part of your day</span></h2>
           </div>
-          <p class="meta-copy">5 oil sets for every state</p>
+          <p class="meta-copy">Morning / Work / Going out / Evening / Sleep</p>
         </div>
         <div class="state-grid">
           <article class="state-card" style="--state-wash: rgba(215, 192, 198, 0.08);">
@@ -711,7 +856,7 @@
           <article class="state-card" style="--state-wash: rgba(206, 190, 196, 0.07);">
             <p class="state-name">WORK</p>
             <h3 class="state-title">Focus</h3>
-            <p class="state-copy">To hold shape. Steady attention without tension. When the day breaks into fragments, this brings you back into one clean line.</p>
+            <p class="state-copy">To hold shape. Steady attention without tension. When the day breaks into fragments, this pulls you back into yourself.</p>
           </article>
           <article class="state-card" style="--state-wash: rgba(188, 167, 173, 0.08);">
             <p class="state-name">GOING OUT</p>
@@ -728,6 +873,12 @@
             <h3 class="state-title">Sleep</h3>
             <p class="state-copy">To sink. Let the day leave your body. Let sleep arrive on its own. Not a hard shutdown — a slow dissolve into quiet.</p>
           </article>
+        </div>
+
+        <!-- Mid-page CTA after collection -->
+        <div class="mid-cta">
+          <p class="mid-cta-text">Found your moment? Be first to try it.</p>
+          <a href="#discovery" class="mid-cta-btn">Get early access</a>
         </div>
       </div>
     </section>
@@ -757,24 +908,23 @@
               <p class="principle-num">02</p>
               <div class="principle-body">
                 <strong>Apply to skin</strong>
-                <p>Wrists, neck, decolletage. Pulse points where the oil meets body heat and opens up.</p>
+                <p>Wrists, neck, chest. Pulse points where the oil meets body heat and opens up.</p>
               </div>
             </div>
             <div class="principle">
               <p class="principle-num">03</p>
               <div class="principle-body">
                 <strong>Let it bloom</strong>
-                <p>Top, heart, base — niche perfumery architecture that unfolds over hours. Intimate, never loud.</p>
-              </div>
-            </div>
-            <div class="principle">
-              <p class="principle-num">04</p>
-              <div class="principle-body">
-                <strong>Works in your real day</strong>
-                <p>No candles. No prep time. No separate ritual space. It fits inside the day you already have.</p>
+                <p>Top, heart, base — three layers of scent that unfold over 4-6 hours. Intimate, never loud.</p>
               </div>
             </div>
           </div>
+        </div>
+
+        <!-- Founder trust signal -->
+        <div class="founder-strip">
+          <p class="founder-label">About</p>
+          <p class="founder-text">Created in Varkala, India. Natural oils with niche-grade fragrance compounds. Each formula built to shift how a moment feels — not just how skin looks.</p>
         </div>
       </div>
     </section>
@@ -784,13 +934,15 @@
       <div class="container">
         <div class="cta-panel">
           <div>
-            <p class="section-label">Coming soon — India, Varkala</p>
+            <p class="section-label">Launching Summer 2026 — India, Varkala</p>
             <h2 class="cta-title">The Discovery set</h2>
-            <p class="cta-copy">Udaya doesn't ask you to choose between fragrance, care, and emotional effect. It sits in the space between them.</p>
+            <p class="cta-copy">All five oils, 10ml each. Try every moment, find the one that becomes yours.</p>
+            <p class="cta-incentive">Waitlist gets early access + launch-day pricing</p>
           </div>
           <form class="cta-form" id="waitlist-form">
             <input class="cta-input" type="email" placeholder="your@email.com" aria-label="Join the Udaya waitlist" required>
-            <button class="cta-btn" type="submit">Notify me at launch</button>
+            <button class="cta-btn" type="submit">Get early access</button>
+            <p class="cta-fine">One email on launch day. No spam. Unsubscribe anytime.</p>
           </form>
         </div>
       </div>
@@ -817,8 +969,9 @@
 
     document.getElementById('waitlist-form').addEventListener('submit', function (e) {
       e.preventDefault();
-      var input = this.querySelector('.cta-input');
-      var btn = this.querySelector('.cta-btn');
+      var form = this;
+      var input = form.querySelector('.cta-input');
+      var btn = form.querySelector('.cta-btn');
       var email = input.value.trim();
       if (!email) return;
 
@@ -836,9 +989,16 @@
         }).catch(function () {});
       }
 
-      btn.textContent = "You're on the list";
-      input.disabled = true;
-      btn.disabled = true;
+      // Rich thank-you state
+      form.innerHTML =
+        '<div class="cta-thankyou">' +
+          '<p class="cta-thankyou-title">You\'re in.</p>' +
+          '<p class="cta-thankyou-copy">We\'ll email you first when the Discovery set is ready — with early pricing.</p>' +
+          '<a href="https://www.instagram.com/udaya.rituals" target="_blank" rel="noopener noreferrer" class="cta-thankyou-ig">' +
+            '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>' +
+            ' Follow @udaya.rituals' +
+          '</a>' +
+        '</div>';
     });
   </script>
 </body>
