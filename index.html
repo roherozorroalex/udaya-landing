@@ -274,6 +274,17 @@
       color: var(--text-strong);
     }
 
+    .nav-ig,
+    .footer-ig {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .nav-ig svg,
+    .footer-ig svg {
+      display: block;
+    }
+
     .hero {
       padding: clamp(40px, 7vw, 88px) 0 var(--section-pad);
     }
@@ -1055,6 +1066,9 @@
           <a href="#formula">How to use</a>
           <a href="#moments">Collection</a>
           <a href="#discovery">Discovery set</a>
+          <a href="https://www.instagram.com/udaya.rituals" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="nav-ig">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+          </a>
         </nav>
       </div>
     </header>
@@ -1378,8 +1392,8 @@
             <p class="cta-copy">
               A set for different parts of the day and different versions of you. Five oils. Live with each one in real moments — and discover which states become part of your own rhythm.
             </p>
-            <form class="cta-form" onsubmit="this.querySelector('.cta-btn').textContent='You\'re on the list'; this.querySelector('.cta-input').disabled=true; this.querySelector('.cta-btn').disabled=true; return false;">
-              <input class="cta-input" type="email" placeholder="your@email.com" aria-label="Join the Udaya waitlist">
+            <form class="cta-form" id="waitlist-form">
+              <input class="cta-input" type="email" placeholder="your@email.com" aria-label="Join the Udaya waitlist" required>
               <button class="cta-btn" type="submit">Notify me at launch</button>
             </form>
             <div class="launch-note" aria-label="Launch status">
@@ -1396,6 +1410,9 @@
         <span>Udaya</span>
         <span>Perfumed oils for how you want to feel</span>
         <span>India, soon</span>
+        <a href="https://www.instagram.com/udaya.rituals" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="footer-ig">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        </a>
       </div>
     </footer>
   </div>
@@ -1417,6 +1434,38 @@
         obs.observe(el);
       });
     })();
+
+    // Waitlist form — collects emails to localStorage
+    // Replace the WEBHOOK_URL below with your integration endpoint (Zapier, Make, n8n, etc.)
+    var WEBHOOK_URL = ''; // e.g. 'https://hooks.zapier.com/hooks/catch/...'
+
+    document.getElementById('waitlist-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var input = this.querySelector('.cta-input');
+      var btn = this.querySelector('.cta-btn');
+      var email = input.value.trim();
+      if (!email) return;
+
+      // Save to localStorage
+      var leads = JSON.parse(localStorage.getItem('udaya_waitlist') || '[]');
+      if (!leads.some(function (l) { return l.email === email; })) {
+        leads.push({ email: email, date: new Date().toISOString() });
+        localStorage.setItem('udaya_waitlist', JSON.stringify(leads));
+      }
+
+      // Send to webhook if configured
+      if (WEBHOOK_URL) {
+        fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, source: 'udaya-landing', timestamp: new Date().toISOString() })
+        }).catch(function () {});
+      }
+
+      btn.textContent = "You're on the list";
+      input.disabled = true;
+      btn.disabled = true;
+    });
   </script>
 </body>
 </html>
