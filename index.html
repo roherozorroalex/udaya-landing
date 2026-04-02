@@ -179,8 +179,6 @@
       color: rgba(240, 235, 227, 0.64);
       font-size: 15px;
       line-height: 1.6;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
       padding: 20px 0;
     }
 
@@ -188,7 +186,6 @@
       width: 100%;
       height: clamp(320px, 36vw, 480px);
       border-radius: 0;
-      border: 1px solid var(--line);
       overflow: hidden;
       background: linear-gradient(135deg, #1a1814 0%, #0d0c0a 100%);
     }
@@ -201,23 +198,15 @@
 
     .signal-strip {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       padding: 40px 0;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
     }
 
     .signal {
       display: flex;
       flex-direction: column;
       gap: 16px;
-      border-top: 1px solid var(--line);
-      padding-top: 16px;
-    }
-
-    .signal:first-child {
-      border-top: 1px solid var(--line);
     }
 
     .signal-title {
@@ -227,12 +216,6 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-    }
-
-    .hero-cta-wrap {
-      display: flex;
-      justify-content: center;
-      padding-top: 16px;
     }
 
     /* ── Buttons ── */
@@ -264,7 +247,6 @@
 
     .levels {
       padding: 0 0 var(--section-pad);
-      border-top: 1px solid var(--line);
     }
 
     .levels-inner {
@@ -337,7 +319,6 @@
 
     .not-just {
       padding: 0 0 var(--section-pad);
-      border-top: 1px solid var(--line);
     }
 
     .split-layout {
@@ -409,7 +390,6 @@
 
     .collection {
       padding: 0 0 var(--section-pad);
-      border-top: 1px solid var(--line);
     }
 
     .collection-inner {
@@ -445,7 +425,7 @@
 
     .state-grid-bot {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
 
@@ -494,16 +474,18 @@
 
     /* ── Mid-page CTA ── */
 
-    .mid-cta {
+    .mid-cta-card {
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       gap: 28px;
-      padding: 80px 0;
-      border-top: 1px solid var(--line);
+      padding: 32px 28px 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
     }
 
-    .mid-cta .display {
+    .mid-cta-card .display {
       color: var(--muted);
       font-size: 28px;
       font-style: italic;
@@ -515,7 +497,6 @@
 
     .how-to-use {
       padding: 0 0 var(--section-pad);
-      border-top: 1px solid var(--line);
     }
 
     .how-head {
@@ -591,30 +572,10 @@
       line-height: 1.6;
     }
 
-    /* ── Founder strip ── */
-
-    .founder-strip {
-      display: flex;
-      justify-content: center;
-      padding: 40px 0;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .founder-strip p {
-      margin: 0;
-      max-width: 720px;
-      color: var(--muted-soft);
-      font-size: 13px;
-      line-height: 1.7;
-      text-align: center;
-    }
-
     /* ── Discovery CTA ── */
 
     .discovery {
       padding: 80px 0;
-      border-top: 1px solid var(--line);
     }
 
     .cta-panel {
@@ -656,7 +617,7 @@
     .cta-form {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 20px;
       width: 100%;
       max-width: 500px;
     }
@@ -749,7 +710,7 @@
       }
 
       .state-grid-bot {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
       }
     }
 
@@ -821,9 +782,10 @@
     <!-- ── Hero ── -->
     <section class="hero" id="top">
       <div class="container hero-inner">
-        <div style="display:flex;flex-direction:column;gap:24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0;">
+        <div style="display:flex;flex-direction:column;gap:24px;padding:20px 0;">
           <h1 class="display hero-headline">Body oils for how you want to <span class="accent">feel.</span></h1>
           <p class="body-text">Perfumed oils for moments of your day and different versions of you</p>
+          <a href="#discovery" class="btn-primary" style="align-self:flex-start;">Get early access</a>
         </div>
 
         <div class="hero-image">
@@ -832,26 +794,19 @@
 
         <div class="signal-strip">
           <article class="signal">
-            <p class="signal-title">Feels part of you</p>
-            <p class="body-muted">Absorbs into skin. No residue, no shine — just warmth.</p>
-          </article>
-          <article class="signal">
             <p class="signal-title">Close to skin</p>
-            <p class="body-muted">Not a cloud of fragrance for others. A quiet atmosphere for you.</p>
+            <p class="body-muted">Not a cloud of fragrance for others. A quiet atmosphere for you</p>
           </article>
           <article class="signal">
             <p class="signal-title">Made for heat</p>
-            <p class="body-muted">Deep but never heavy</p>
+            <p class="body-muted">Deep but never heavy. Special carrier oils for hot weather</p>
           </article>
           <article class="signal">
             <p class="signal-title">Evolves on skin</p>
-            <p class="body-muted">The scent evolves as you wear it — top, heart, base unfold over hours</p>
+            <p class="body-muted">The scent evolves as you wear it — top, heart, base</p>
           </article>
         </div>
 
-        <div class="hero-cta-wrap">
-          <a href="#discovery" class="btn-primary">Get early access</a>
-        </div>
       </div>
     </section>
 
@@ -964,15 +919,11 @@
             <h3 class="state-title">Sleep</h3>
             <p class="state-copy">To sink. Let the day leave your body. Let sleep arrive on its own. Not a hard shutdown — a slow dissolve into quiet.</p>
           </article>
+          <article class="mid-cta-card">
+            <p class="display" style="color:var(--muted);font-size:28px;font-style:italic;text-align:center;">Found your moment? Be first to try it.</p>
+            <a href="#discovery" class="btn-primary">Get early access</a>
+          </article>
         </div>
-      </div>
-    </section>
-
-    <!-- ── Mid-page CTA ── -->
-    <section class="mid-cta">
-      <div class="container" style="display:flex;flex-direction:column;align-items:center;gap:28px;">
-        <p class="display" style="color:var(--muted);font-size:28px;font-style:italic;text-align:center;">Found your moment? Be first to try it.</p>
-        <a href="#discovery" class="btn-primary">Get early access</a>
       </div>
     </section>
 
@@ -1020,13 +971,6 @@
       </div>
     </section>
 
-    <!-- ── Founder Strip ── -->
-    <div class="founder-strip">
-      <div class="container" style="display:flex;justify-content:center;">
-        <p>Created in Varkala, India. Natural oils with niche-grade fragrance compounds. Each formula built to shift how a moment feels — not just how skin looks.</p>
-      </div>
-    </div>
-
     <!-- ── Discovery CTA ── -->
     <section class="discovery" id="discovery">
       <div class="container">
@@ -1061,9 +1005,9 @@
   <!-- ── Footer ── -->
   <footer>
     <div class="container footer">
-      <span>UDAYA</span>
-      <span>Perfumed oils for how you want to feel</span>
-      <span>India, Varkala</span>
+      <span style="display:flex;align-items:center;gap:16px;">UDAYA <a href="https://instagram.com/udaya.rituals" target="_blank" rel="noopener" aria-label="Instagram" style="display:flex;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a></span>
+      <span style="font-size:13px;font-weight:400;letter-spacing:0;text-transform:none;text-align:center;line-height:1.7;">Created in Varkala, India. Natural oils with niche-grade fragrance compounds. Each oil is handmade</span>
+      <span>INDIA, VARKALA</span>
     </div>
   </footer>
 
