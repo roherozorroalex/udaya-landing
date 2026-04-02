@@ -185,7 +185,7 @@
     /* ── Hero ── */
 
     .hero {
-      padding: clamp(40px, 7vw, 88px) 0 var(--section-pad);
+      padding: clamp(40px, 7vw, 88px) 0 0;
     }
 
     .hero-inner {
@@ -208,10 +208,7 @@
     }
 
     .hero-image {
-      width: 100vw;
-      position: relative;
-      left: 50%;
-      transform: translateX(-50%);
+      width: 100%;
       height: clamp(320px, 36vw, 480px);
       overflow: hidden;
       background: var(--bg-soft);
@@ -831,10 +828,6 @@
           </a>
         </div>
 
-        <div class="hero-image">
-          <img src="assets/hero.png" alt="Udaya body oils collection" loading="eager">
-        </div>
-
         <div class="signal-strip">
           <article class="signal">
             <p class="signal-title">Close to skin</p>
@@ -850,6 +843,10 @@
           </article>
         </div>
 
+      </div>
+
+      <div class="hero-image">
+        <img src="assets/hero.png" alt="Udaya body oils collection" loading="eager">
       </div>
     </section>
 
