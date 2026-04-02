@@ -133,6 +133,12 @@
       letter-spacing: 0.16em;
     }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
     .nav-links {
       display: flex;
       align-items: center;
@@ -150,11 +156,30 @@
 
     .nav-links a:hover { color: var(--text-strong); }
 
-    .nav-links svg {
+    .nav-ig {
+      display: flex;
+      color: var(--text-strong);
+    }
+
+    .nav-ig svg {
       display: block;
       width: 16px;
       height: 16px;
+    }
+
+    .nav-burger {
+      display: none;
+      background: none;
+      border: none;
+      padding: 4px;
+      cursor: pointer;
       color: var(--text-strong);
+    }
+
+    .nav-burger svg {
+      display: block;
+      width: 20px;
+      height: 20px;
     }
 
     /* ── Hero ── */
@@ -714,9 +739,22 @@
       .state-grid-bot {
         grid-template-columns: 1fr;
       }
-      .topbar-inner {
+
+      .nav-burger { display: flex; }
+
+      .nav-links {
+        display: none;
         flex-direction: column;
         align-items: flex-start;
+        gap: 20px;
+        width: 100%;
+        padding: 20px 0 4px;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .topbar-inner {
+        flex-wrap: wrap;
       }
 
       .cards-row {
@@ -742,11 +780,6 @@
         flex-direction: column;
         gap: 8px;
       }
-
-      .nav-links {
-        gap: 16px;
-        flex-wrap: wrap;
-      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -764,14 +797,19 @@
         <span class="brand">UDAYA</span>
         <span class="brand-badge">LAUNCH IN SUMMER'26</span>
       </div>
+      <div class="nav-right">
+        <a href="https://instagram.com/udaya.rituals" target="_blank" rel="noopener" aria-label="Instagram" class="nav-ig">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+        </a>
+        <button class="nav-burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="7" y2="7"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="17" y2="17"/></svg>
+        </button>
+      </div>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="#moments">Three levels</a>
         <a href="#collection">The collection</a>
         <a href="#how-to-use">How to use</a>
         <a href="#discovery">Discovery set</a>
-        <a href="https://instagram.com/udaya.rituals" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-        </a>
       </nav>
     </div>
   </header>
@@ -1011,6 +1049,12 @@
   </footer>
 
   <script>
+    document.querySelectorAll('.nav-links a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        document.querySelector('.nav-links').classList.remove('open');
+      });
+    });
+
     var WEBHOOK_URL = '';
 
     function handleSubmit(e) {
