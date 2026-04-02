@@ -4,14 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Udaya — Body Oils For How You Want To Feel</title>
-  <meta name="description" content="Udaya creates perfumed body oils for five states: Wake, Focus, Open Heart, Grounding, and Sleep. Twenty seconds after the shower — that's the whole ritual.">
+  <meta name="description" content="Perfumed body oils for moments of your day. Five oils, five states. Launching Summer 2026 from Varkala, India.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #060606;
       --bg-soft: #0d0c0a;
+      --bg-panel: #0B0A09;
+      --bg-panel-strong: #0E0D0B;
       --line: #1F1D1A;
       --line-soft: #151412;
       --text: #f0ebe3;
@@ -19,15 +21,16 @@
       --muted: #C2BEB8;
       --muted-soft: #6E6B66;
       --accent: #29eee9;
-      --accent-glow: rgba(41, 238, 233, 0.14);
+      --accent-deep: #8fd5c2;
+      --accent-soft: #283D38;
       --radius-xl: 18px;
       --radius-lg: 10px;
       --radius-md: 6px;
       --container: 1220px;
       --side-pad: clamp(20px, 4vw, 48px);
-      --section-pad: clamp(92px, 10vw, 120px);
+      --section-pad: clamp(80px, 9vw, 120px);
       --font-display: "Cormorant Garamond", Georgia, serif;
-      --font-body: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+      --font-body: "Montserrat", "Helvetica Neue", Arial, sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -37,9 +40,7 @@
       margin: 0;
       min-width: 320px;
       font-family: var(--font-body);
-      background:
-        radial-gradient(circle at 20% 8%, rgba(41, 238, 233, 0.03), transparent 24%),
-        linear-gradient(180deg, #090909 0%, #060606 48%, #040404 100%);
+      background: var(--bg);
       color: var(--text);
       line-height: 1.5;
       overflow-x: hidden;
@@ -52,13 +53,49 @@
     button, input { font: inherit; }
 
     .container {
-      width: min(calc(100% - (var(--side-pad) * 2)), var(--container));
+      width: min(calc(100% - var(--side-pad) * 2), var(--container));
       margin: 0 auto;
     }
 
     [id] { scroll-margin-top: 80px; }
 
-    /* ── TOPBAR ── */
+    /* ── Typography ── */
+
+    .label {
+      margin: 0;
+      color: var(--muted-soft);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .display {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 400;
+      color: var(--text-strong);
+      letter-spacing: 0;
+    }
+
+    .display .accent { color: var(--accent); }
+
+    .body-text {
+      margin: 0;
+      color: rgba(240, 235, 227, 0.64);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .body-muted {
+      margin: 0;
+      color: rgba(240, 235, 227, 0.68);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* ── Navigation ── */
+
     .topbar {
       position: sticky;
       top: 0;
@@ -93,15 +130,13 @@
       color: var(--accent);
       font-size: 7px;
       font-weight: 700;
-      letter-spacing: 0.19em;
+      letter-spacing: 0.16em;
     }
 
     .nav-links {
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
-      justify-content: flex-end;
-      gap: 12px 32px;
+      gap: 32px;
     }
 
     .nav-links a {
@@ -113,64 +148,79 @@
       transition: color 180ms ease;
     }
 
-    .nav-links a:hover,
-    .nav-links a:focus-visible { color: var(--text-strong); }
+    .nav-links a:hover { color: var(--text-strong); }
 
-    .nav-ig, .footer-ig {
-      display: inline-flex;
-      align-items: center;
-      transition: color 180ms ease;
-    }
-
-    .nav-ig:hover, .footer-ig:hover { color: var(--text-strong); }
-
-    /* ── HERO ── */
-    .hero { padding: clamp(40px, 7vw, 88px) 0 var(--section-pad); }
-
-    .hero-copy {
-      display: grid;
-      gap: 24px;
-      padding: 20px 0;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .hero-title {
-      margin: 0;
-      font-family: var(--font-display);
-      font-weight: 300;
-      font-size: clamp(52px, 8vw, 80px);
-      line-height: 1.05;
+    .nav-links svg {
+      display: block;
+      width: 16px;
+      height: 16px;
       color: var(--text-strong);
     }
 
-    .hero-title span { color: var(--accent); }
+    /* ── Hero ── */
+
+    .hero {
+      padding: clamp(40px, 7vw, 88px) 0 var(--section-pad);
+    }
+
+    .hero-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 44px;
+    }
+
+    .hero-headline {
+      font-size: clamp(48px, 7vw, 80px);
+      line-height: 1.05;
+    }
 
     .hero-sub {
-      margin: 0;
+      max-width: 100%;
       color: rgba(240, 235, 227, 0.64);
       font-size: 15px;
       line-height: 1.6;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 20px 0;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: clamp(320px, 36vw, 480px);
+      border-radius: 0;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      background: linear-gradient(135deg, #1a1814 0%, #0d0c0a 100%);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .signal-strip {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 24px;
-      margin-top: 44px;
-      padding: 30px 0 0;
+      padding: 40px 0;
+      border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
     }
 
     .signal {
-      flex: 1;
-      display: grid;
+      display: flex;
+      flex-direction: column;
       gap: 16px;
-      align-content: start;
-      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+    }
+
+    .signal:first-child {
       border-top: 1px solid var(--line);
     }
 
-    .signal-value {
+    .signal-title {
       margin: 0;
       color: var(--text-strong);
       font-size: 14px;
@@ -179,88 +229,87 @@
       text-transform: uppercase;
     }
 
-    .signal-copy {
-      margin: 0;
-      color: rgba(240, 235, 227, 0.68);
-      font-size: 14px;
-      line-height: 1.6;
+    .hero-cta-wrap {
+      display: flex;
+      justify-content: center;
+      padding-top: 16px;
     }
 
-    /* ── SECTIONS ── */
-    .section {
-      position: relative;
-      padding: var(--section-pad) 0;
-    }
+    /* ── Buttons ── */
 
-    .section + .section { border-top: 1px solid var(--line-soft); }
-
-    .section-head {
-      display: grid;
-      gap: 24px;
-      margin-bottom: 64px;
-    }
-
-    .section-label {
-      margin: 0;
-      color: var(--muted-soft);
-      font-size: 10px;
-      font-weight: 600;
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      height: 50px;
+      padding: 0 36px;
+      border: none;
+      border-radius: var(--radius-lg);
+      background: var(--accent);
+      color: var(--bg);
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 180ms ease;
+      text-decoration: none;
     }
 
-    .section-title {
-      margin: 0;
-      font-family: var(--font-display);
-      font-weight: 300;
-      font-size: clamp(36px, 4.5vw, 52px);
+    .btn-primary:hover { opacity: 0.88; }
+
+    /* ── Three Levels ── */
+
+    .levels {
+      padding: 0 0 var(--section-pad);
+      border-top: 1px solid var(--line);
+    }
+
+    .levels-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+
+    .levels-head {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+      padding-top: var(--section-pad);
+    }
+
+    .levels-head .display {
+      font-size: clamp(34px, 4.5vw, 52px);
       line-height: 1.1;
-      color: var(--text-strong);
     }
 
-    .section-title span { color: var(--accent); }
-
-    .section-intro {
-      margin: 0;
+    .levels-head .body-text {
       max-width: 680px;
-      color: rgba(240, 235, 227, 0.64);
-      font-size: 15px;
-      line-height: 1.6;
     }
 
-    .meta-copy {
-      margin: 0;
-      color: var(--muted-soft);
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    /* ── CARDS (Three Levels) ── */
-    .arc-grid {
+    .cards-row {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
 
-    .card {
-      display: grid;
+    .level-card {
+      display: flex;
+      flex-direction: column;
       gap: 20px;
       padding: 36px;
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
       background: rgba(248, 242, 234, 0.024);
-      transition: transform 180ms ease, border-color 180ms ease;
+      transition: border-color 180ms ease;
     }
 
-    .card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(41, 238, 233, 0.18);
-    }
+    .level-card:hover { border-color: rgba(248, 242, 234, 0.08); }
 
-    .card-number {
-      display: inline-flex;
+    .card-icon {
+      display: flex;
       align-items: center;
       justify-content: center;
       width: 40px;
@@ -268,95 +317,79 @@
       border-radius: var(--radius-md);
       border: 1px solid rgba(169, 216, 203, 0.22);
       background: rgba(169, 216, 203, 0.04);
-      color: var(--text);
-      font-size: 14px;
-      font-weight: 600;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
     }
 
-    .card-title {
-      margin: 0;
+    .card-title-styled {
       font-family: var(--font-display);
       font-size: 28px;
+      font-weight: 400;
       line-height: 1.2;
       color: var(--text-strong);
     }
 
-    .card-title span { color: var(--accent); }
+    .card-title-styled .accent { color: var(--accent); }
 
-    .card-copy {
-      margin: 0;
-      color: rgba(240, 235, 227, 0.64);
-      font-size: 14px;
-      line-height: 1.6;
+    /* ── Not Just Body Oil ── */
+
+    .not-just {
+      padding: 0 0 var(--section-pad);
+      border-top: 1px solid var(--line);
     }
 
-    /* ── SPLIT LAYOUT ── */
     .split-layout {
       display: grid;
-      gap: clamp(48px, 6vw, 80px);
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: clamp(48px, 5vw, 80px);
       align-items: start;
+      padding-top: var(--section-pad);
     }
 
-    .split-layout--center { align-items: center; }
-
-    .split-layout--wide {
-      grid-template-columns: minmax(200px, 450px) minmax(0, 1fr);
+    .split-left {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
     }
 
-    .split-layout--narrow {
-      grid-template-columns: minmax(200px, 320px) minmax(0, 1fr);
-    }
-
-    .split-title {
-      margin: 0;
-      font-family: var(--font-display);
-      font-weight: 300;
-      font-size: clamp(34px, 4.5vw, 52px);
+    .split-left .display {
+      font-size: clamp(34px, 4vw, 52px);
       line-height: 1.1;
-      color: var(--text-strong);
     }
 
-    .split-quote {
-      margin: 48px 0 0;
-      max-width: 200px;
-      font-family: var(--font-display);
-      font-style: italic;
-      font-weight: 300;
-      font-size: 24px;
-      line-height: 1.4;
+    .split-left .italic-desc {
       color: var(--muted);
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.4;
+      max-width: 200px;
     }
 
-    /* ── PRINCIPLES ── */
-    .principles { display: grid; }
+    .principles {
+      display: flex;
+      flex-direction: column;
+    }
 
     .principle {
       display: grid;
-      grid-template-columns: 48px 1fr;
+      grid-template-columns: auto 1fr;
       gap: 32px;
-      padding: 24px 0;
-      border-top: 1px solid var(--line);
-    }
-
-    .principle--panel {
       padding: 24px 48px;
-      background: rgba(248, 242, 234, 0.024);
       border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+      background: rgba(248, 242, 234, 0.024);
     }
 
-    .principle--panel + .principle--panel { border-top: none; }
+    .principle:last-child { border-bottom: 1px solid var(--line); }
 
-    .principle-num {
-      margin: 0;
-      padding-top: 4px;
-      color: var(--muted-soft);
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
+    .principle-body {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
-
-    .principle-body { display: grid; gap: 8px; }
 
     .principle-body strong {
       display: block;
@@ -372,41 +405,67 @@
       line-height: 1.6;
     }
 
-    /* ── COLLECTION ── */
-    .states-head {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 28px 36px;
-      margin-bottom: 48px;
+    /* ── Collection ── */
+
+    .collection {
+      padding: 0 0 var(--section-pad);
+      border-top: 1px solid var(--line);
     }
 
-    .states-head .section-head { margin-bottom: 0; }
+    .collection-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+      padding-top: var(--section-pad);
+    }
 
-    .state-grid {
+    .collection-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 28px;
+    }
+
+    .collection-head-left {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .collection-head-left .display {
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1.1;
+    }
+
+    .state-grid-top {
       display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .state-grid-bot {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 24px;
     }
 
     .state-card {
-      display: grid;
+      display: flex;
+      flex-direction: column;
       gap: 18px;
       padding: 32px 28px 28px;
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
-      background: var(--state-wash, rgba(248, 242, 234, 0.022));
-      grid-column: span 2;
-      transition: transform 180ms ease, border-color 180ms ease;
+      transition: border-color 180ms ease;
     }
 
-    .state-card:nth-child(n+4) { grid-column: span 3; }
+    .state-card:hover { border-color: rgba(248, 242, 234, 0.08); }
 
-    .state-card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(41, 238, 233, 0.18);
-    }
+    .state-card.morning { background: rgba(215, 192, 198, 0.08); }
+    .state-card.focus   { background: rgba(206, 190, 196, 0.07); }
+    .state-card.going   { background: rgba(188, 167, 173, 0.08); }
+    .state-card.evening { background: rgba(178, 162, 171, 0.075); }
+    .state-card.sleep   { background: rgba(225, 206, 212, 0.085); }
 
     .state-name {
       margin: 0;
@@ -414,14 +473,16 @@
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
     .state-title {
       margin: 0;
+      color: var(--accent);
       font-family: var(--font-display);
       font-size: 28px;
+      font-weight: 400;
       line-height: 1.2;
-      color: var(--accent);
     }
 
     .state-copy {
@@ -431,89 +492,238 @@
       line-height: 1.78;
     }
 
-    /* ── CTA ── */
-    .cta { padding-bottom: calc(var(--section-pad) + 10px); }
+    /* ── Mid-page CTA ── */
+
+    .mid-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+      padding: 80px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .mid-cta .display {
+      color: var(--muted);
+      font-size: 28px;
+      font-style: italic;
+      line-height: 1.3;
+      text-align: center;
+    }
+
+    /* ── How to Use ── */
+
+    .how-to-use {
+      padding: 0 0 var(--section-pad);
+      border-top: 1px solid var(--line);
+    }
+
+    .how-head {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+      padding-top: var(--section-pad);
+    }
+
+    .how-head .display {
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1.1;
+    }
+
+    .how-head .body-text {
+      max-width: 680px;
+    }
+
+    .how-split {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-top: 64px;
+    }
+
+    .how-left {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .how-left .italic-desc {
+      color: var(--muted);
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.4;
+      max-width: 180px;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      padding: 24px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .step-body {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .step-body strong {
+      display: block;
+      color: var(--text-strong);
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .step-body p {
+      margin: 0;
+      color: rgba(240, 235, 227, 0.66);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ── Founder strip ── */
+
+    .founder-strip {
+      display: flex;
+      justify-content: center;
+      padding: 40px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .founder-strip p {
+      margin: 0;
+      max-width: 720px;
+      color: var(--muted-soft);
+      font-size: 13px;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    /* ── Discovery CTA ── */
+
+    .discovery {
+      padding: 80px 0;
+      border-top: 1px solid var(--line);
+    }
 
     .cta-panel {
-      display: grid;
-      grid-template-columns: 1fr minmax(280px, 500px);
+      display: flex;
       align-items: center;
-      gap: clamp(48px, 10vw, 158px);
-      padding: clamp(32px, 5vw, 62px);
+      gap: clamp(60px, 8vw, 158px);
+      padding: clamp(36px, 4vw, 62px);
       border: 1px solid var(--line);
       border-radius: var(--radius-xl);
       background: rgba(248, 242, 234, 0.024);
     }
 
-    .cta-title {
-      margin: 24px 0 0;
-      font-family: var(--font-display);
-      font-weight: 300;
-      font-size: clamp(36px, 5vw, 52px);
-      line-height: 1.1;
-      color: var(--text-strong);
+    .cta-content {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+      flex: 1;
     }
 
-    .cta-copy {
-      margin: 24px 0 0;
-      color: rgba(240, 235, 227, 0.64);
-      font-size: 15px;
+    .cta-text-group {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .cta-text-group .display {
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1.1;
+    }
+
+    .cta-incentive {
+      margin: 0;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
       line-height: 1.6;
     }
 
     .cta-form {
-      display: grid;
+      display: flex;
+      flex-direction: column;
       gap: 24px;
+      width: 100%;
+      max-width: 500px;
     }
 
     .cta-input {
-      width: 100%;
+      display: flex;
+      align-items: center;
       height: 50px;
       padding: 0 18px;
-      background: rgba(248, 242, 234, 0.05);
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
-      color: var(--text-strong);
+      background: rgba(248, 242, 234, 0.05);
+      color: var(--text);
       font-size: 15px;
       outline: none;
-      transition: border-color 200ms ease;
+      transition: border-color 180ms ease;
     }
 
-    .cta-input::placeholder { color: rgba(240, 235, 227, 0.44); }
-    .cta-input:focus { border-color: rgba(41, 238, 233, 0.3); }
+    .cta-input::placeholder {
+      color: rgba(240, 235, 227, 0.44);
+    }
 
-    .cta-btn {
-      width: 100%;
-      height: 50px;
-      padding: 0 28px;
-      background: var(--accent);
-      color: #060606;
-      border: none;
-      border-radius: var(--radius-lg);
+    .cta-input:focus {
+      border-color: var(--accent);
+    }
+
+    .cta-fine-print {
+      margin: 0;
+      color: var(--muted-soft);
       font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: opacity 200ms ease, transform 160ms ease;
+      text-align: center;
     }
 
-    .cta-btn:hover {
-      opacity: 0.84;
-      transform: translateY(-1px);
+    /* Thank-You State */
+    .thank-you {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      padding: 62px 48px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: rgba(248, 242, 234, 0.024);
+      text-align: center;
     }
 
-    /* ── FOOTER ── */
-    .footer {
-      padding: 24px 0 42px;
-      border-top: 1px solid var(--line-soft);
-    }
-
-    .footer-inner {
+    .thank-you.visible {
       display: flex;
-      flex-wrap: wrap;
+    }
+
+    .thank-you .display {
+      font-size: 42px;
+      line-height: 1.1;
+    }
+
+    .thank-you .body-text {
+      max-width: 420px;
+    }
+
+    /* ── Footer ── */
+
+    .footer {
+      display: flex;
       justify-content: space-between;
-      gap: 12px 24px;
+      gap: 16px;
+      padding: 24px 0;
+      border-top: 1px solid var(--line-soft);
       color: var(--muted-soft);
       font-size: 10px;
       font-weight: 700;
@@ -521,59 +731,62 @@
       text-transform: uppercase;
     }
 
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
+    /* ── Responsive ── */
 
-
-
-    /* ── RESPONSIVE ── */
     @media (max-width: 1120px) {
-      .split-layout--wide,
-      .split-layout--narrow { grid-template-columns: 1fr; }
-      .cta-panel { grid-template-columns: 1fr; }
-      .state-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .state-card, .state-card:nth-child(n+4) { grid-column: span 1; }
+      .split-layout,
+      .how-split {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-panel {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .state-grid-top {
+        grid-template-columns: 1fr;
+      }
+
+      .state-grid-bot {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 860px) {
-      .topbar-inner,
-      .states-head,
-      .footer-inner {
+      .topbar-inner {
         flex-direction: column;
         align-items: flex-start;
       }
-      .nav-links { justify-content: flex-start; }
-      .arc-grid, .state-grid { grid-template-columns: 1fr; }
-      .principle { grid-template-columns: 1fr; gap: 10px; }
-      .principle--panel { padding: 24px; }
+
+      .cards-row {
+        grid-template-columns: 1fr;
+      }
+
+      .signal-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .collection-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
 
     @media (max-width: 640px) {
-      [id] { scroll-margin-top: 96px; }
-      .topbar-inner { gap: 14px; padding: 14px 0; }
-      .nav-links {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px 14px;
+      .signal-strip {
+        grid-template-columns: 1fr;
       }
-      .hero { padding-top: 20px; }
-      .hero-title { font-size: clamp(44px, 16vw, 64px); }
-      .section-title, .split-title, .cta-title { font-size: clamp(30px, 8vw, 42px); }
-      .section { padding: 72px 0; }
-      .section-head, .states-head { margin-bottom: 40px; }
-      .signal-strip { flex-direction: column; }
-      .card, .state-card { padding: 24px; }
-      .cta-panel { padding: 32px 24px; }
-    }
 
-    @media (max-width: 420px) {
-      .nav-links { grid-template-columns: 1fr; }
-      .section { padding: 64px 0; }
-      .card, .state-card, .cta-panel { padding: 22px; }
+      .footer {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .nav-links {
+        gap: 16px;
+        flex-wrap: wrap;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -583,106 +796,125 @@
   </style>
 </head>
 <body>
-  <!-- ── NAV ── -->
+
+  <!-- ── Navigation ── -->
   <header class="topbar">
     <div class="container topbar-inner">
       <div class="brand-group">
         <span class="brand">UDAYA</span>
-        <span class="brand-badge">SOON</span>
+        <span class="brand-badge">SUMMER 2026</span>
       </div>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="#ritual">The oils</a>
-        <a href="#formula">How to use</a>
-        <a href="#moments">Collection</a>
+        <a href="#moments">The oils</a>
+        <a href="#how-to-use">How to use</a>
+        <a href="#collection">Collection</a>
         <a href="#discovery">Discovery set</a>
-        <a href="https://www.instagram.com/udaya.rituals" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="nav-ig">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        <a href="https://instagram.com/udaya.rituals" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
         </a>
       </nav>
     </div>
   </header>
 
   <main>
-    <!-- ── 1. HERO ── -->
+
+    <!-- ── Hero ── -->
     <section class="hero" id="top">
-      <div class="container">
-        <div class="hero-copy">
-          <h1 class="hero-title">Body oils for how you want to <span>feel.</span></h1>
-          <p class="hero-sub">Perfumed oils for moments of your day and different versions of you</p>
+      <div class="container hero-inner">
+        <div style="display:flex;flex-direction:column;gap:24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0;">
+          <h1 class="display hero-headline">Body oils for how you want to <span class="accent">feel.</span></h1>
+          <p class="body-text">Perfumed oils for moments of your day and different versions of you</p>
         </div>
-        <div class="signal-strip" aria-label="Key product signals">
+
+        <div class="hero-image">
+          <img src="assets/hero.png" alt="Udaya body oils collection" loading="eager">
+        </div>
+
+        <div class="signal-strip">
           <article class="signal">
-            <p class="signal-value">Feels part of you</p>
-            <p class="signal-copy">A soft glow that feels like your own skin</p>
+            <p class="signal-title">Feels part of you</p>
+            <p class="body-muted">Absorbs into skin. No residue, no shine — just warmth.</p>
           </article>
           <article class="signal">
-            <p class="signal-value">Close to skin</p>
-            <p class="signal-copy">The scent stays intimate. It lives on your skin, not in the room. Your fragrance, your space.</p>
+            <p class="signal-title">Close to skin</p>
+            <p class="body-muted">Not a cloud of fragrance for others. A quiet atmosphere for you.</p>
           </article>
           <article class="signal">
-            <p class="signal-value">Made for heat</p>
-            <p class="signal-copy">Deep but never heavy</p>
+            <p class="signal-title">Made for heat</p>
+            <p class="body-muted">Deep but never heavy</p>
           </article>
           <article class="signal">
-            <p class="signal-value">Evolves on skin</p>
-            <p class="signal-copy">The scent evolves as you wear it — top, heart, base unfold over hours</p>
+            <p class="signal-title">Evolves on skin</p>
+            <p class="body-muted">The scent evolves as you wear it — top, heart, base unfold over hours</p>
+          </article>
+        </div>
+
+        <div class="hero-cta-wrap">
+          <a href="#discovery" class="btn-primary">Get early access</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Three Levels ── -->
+    <section class="levels" id="moments">
+      <div class="container levels-inner">
+        <div class="levels-head">
+          <p class="label">What you actually get</p>
+          <div style="display:flex;flex-direction:column;gap:24px;">
+            <h2 class="display" style="font-size:clamp(34px,4.5vw,52px);line-height:1.1;">Udaya oils work on <span class="accent">three levels</span></h2>
+            <p class="body-text" style="max-width:680px;">Not just fragrance and not just body care. Something that works on your skin, your mood, and how you feel about yourself.</p>
+          </div>
+        </div>
+
+        <div class="cards-row">
+          <article class="level-card">
+            <div class="card-icon">01</div>
+            <div class="card-title-styled">The <span class="accent">sensory</span> layer</div>
+            <p class="body-muted">Not a cloud of fragrance for others. A quiet atmosphere for you — body-warm, intimate, close to skin.</p>
+          </article>
+          <article class="level-card">
+            <div class="card-icon">02</div>
+            <div class="card-title-styled">The <span class="accent">emotional</span> shift</div>
+            <p class="body-muted">Helps you gather yourself. Soften. Exhale. Focus. A shift you feel within the first minute.</p>
+          </article>
+          <article class="level-card">
+            <div class="card-icon">03</div>
+            <div class="card-title-styled">The <span class="accent">identity</span> effect</div>
+            <p class="body-muted">You feel more composed. More beautiful to yourself. More like the version of you that you actually want to inhabit.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ── 2. THREE LEVELS ── -->
-    <section class="section" id="ritual">
-      <div class="container">
-        <div class="section-head">
-          <p class="section-label">What you actually get</p>
-          <h2 class="section-title">Udaya oils work on <span>three levels</span></h2>
-          <p class="section-intro">Not just fragrance and not just body care. Udaya gives you something that works on skin, on feeling, and on how you inhabit yourself.</p>
+    <!-- ── Not Just Body Oil ── -->
+    <section class="not-just">
+      <div class="container split-layout">
+        <div class="split-left">
+          <div style="display:flex;flex-direction:column;gap:48px;">
+            <div style="display:flex;flex-direction:column;gap:24px;">
+              <h2 class="display" style="font-size:clamp(34px,4vw,52px);line-height:1.1;">Not just body oil</h2>
+            </div>
+          </div>
+          <p class="italic-desc">A ritual that works in your actual life.</p>
         </div>
-        <div class="arc-grid">
-          <article class="card">
-            <div class="card-number">01</div>
-            <h3 class="card-title">The <span>sensory</span> layer</h3>
-            <p class="card-copy">Sits close to the skin. Body-warm. Intimate. Not a cloud of fragrance for others — a quiet atmosphere for you.</p>
-          </article>
-          <article class="card">
-            <div class="card-number">02</div>
-            <h3 class="card-title">The <span>emotional</span> shift</h3>
-            <p class="card-copy">Helps you gather yourself. Soften. Exhale. Focus. Not a claim — a shift you feel within the first minute.</p>
-          </article>
-          <article class="card">
-            <div class="card-number">03</div>
-            <h3 class="card-title">The <span>identity</span> effect</h3>
-            <p class="card-copy">You feel more composed. More beautiful to yourself. More like the version of you that you actually want to inhabit.</p>
-          </article>
-        </div>
-      </div>
-    </section>
 
-    <!-- ── 3. NOT JUST BODY OIL ── -->
-    <section class="section">
-      <div class="container split-layout split-layout--wide split-layout--center">
-        <div>
-          <h2 class="split-title">Not just body oil</h2>
-          <p class="split-quote">A ritual that works in your actual life.</p>
-        </div>
         <div class="principles">
-          <div class="principle principle--panel">
-            <p class="principle-num">01</p>
+          <div class="principle">
+            <p class="label" style="padding-top:4px;">01</p>
             <div class="principle-body">
               <strong>Not perfume</strong>
               <p>Perfume projects outward. Udaya lives on your skin. It's not for the room — it's for how you feel inside your own atmosphere.</p>
             </div>
           </div>
-          <div class="principle principle--panel">
-            <p class="principle-num">02</p>
+          <div class="principle">
+            <p class="label" style="padding-top:4px;">02</p>
             <div class="principle-body">
               <strong>Not generic body oil</strong>
-              <p>Most body oils are about only moisturising. This is about entering a different feeling of yourself. Niche perfumery architecture in an intimate oil format.</p>
+              <p>Most body oils are only about moisturising. This is about entering a different feeling of yourself. Built like fine perfume — but worn on skin, not sprayed into the air.</p>
             </div>
           </div>
-          <div class="principle principle--panel">
-            <p class="principle-num">03</p>
+          <div class="principle">
+            <p class="label" style="padding-top:4px;">03</p>
             <div class="principle-body">
               <strong>Not like long yoga practice</strong>
               <p>Twenty seconds after the shower. Not a ritual — a gesture. It fits inside what you already do.</p>
@@ -692,39 +924,43 @@
       </div>
     </section>
 
-    <!-- ── 4. THE COLLECTION ── -->
-    <section class="section" id="moments">
-      <div class="container">
-        <div class="states-head">
-          <div class="section-head">
-            <p class="section-label">The Collection</p>
-            <h2 class="section-title">One oil for each <span>part of your day</span></h2>
+    <!-- ── The Collection ── -->
+    <section class="collection" id="collection">
+      <div class="container collection-inner">
+        <div class="collection-head">
+          <div class="collection-head-left">
+            <p class="label">The collection</p>
+            <h2 class="display" style="font-size:clamp(34px,4vw,52px);line-height:1.1;">One oil for each <span class="accent">part of your day</span></h2>
           </div>
-          <p class="meta-copy">5 oil sets for every state</p>
+          <p class="label">Morning / Work / Going out / Evening / Sleep</p>
         </div>
-        <div class="state-grid">
-          <article class="state-card" style="--state-wash: rgba(215, 192, 198, 0.08);">
-            <p class="state-name">MORNING</p>
+
+        <div class="state-grid-top">
+          <article class="state-card morning">
+            <p class="state-name">Morning</p>
             <h3 class="state-title">Wake</h3>
             <p class="state-copy">To gather yourself and enter the day whole — not scattered. Applied after the shower, before the first message.</p>
           </article>
-          <article class="state-card" style="--state-wash: rgba(206, 190, 196, 0.07);">
-            <p class="state-name">WORK</p>
+          <article class="state-card focus">
+            <p class="state-name">Work</p>
             <h3 class="state-title">Focus</h3>
-            <p class="state-copy">To hold shape. Steady attention without tension. When the day breaks into fragments, this brings you back into one clean line.</p>
+            <p class="state-copy">To hold shape. Steady attention without tension. When the day breaks into fragments, this pulls you back into yourself.</p>
           </article>
-          <article class="state-card" style="--state-wash: rgba(188, 167, 173, 0.08);">
-            <p class="state-name">GOING OUT</p>
+          <article class="state-card going">
+            <p class="state-name">Going out</p>
             <h3 class="state-title">Open Heart</h3>
             <p class="state-copy">To feel more radiant and open. More present in your warmth. For when you want to arrive — not just show up.</p>
           </article>
-          <article class="state-card" style="--state-wash: rgba(178, 162, 171, 0.075);">
-            <p class="state-name">EVENING</p>
+        </div>
+
+        <div class="state-grid-bot">
+          <article class="state-card evening">
+            <p class="state-name">Evening</p>
             <h3 class="state-title">Grounding</h3>
             <p class="state-copy">To soften and come down. Not collapse — just land beautifully. The body understands the day is changing.</p>
           </article>
-          <article class="state-card" style="--state-wash: rgba(225, 206, 212, 0.085);">
-            <p class="state-name">BEFORE going to bed</p>
+          <article class="state-card sleep">
+            <p class="state-name">Before going to bed</p>
             <h3 class="state-title">Sleep</h3>
             <p class="state-copy">To sink. Let the day leave your body. Let sleep arrive on its own. Not a hard shutdown — a slow dissolve into quiet.</p>
           </article>
@@ -732,46 +968,51 @@
       </div>
     </section>
 
-    <!-- ── 5. HOW TO USE ── -->
-    <section class="section" id="formula">
+    <!-- ── Mid-page CTA ── -->
+    <section class="mid-cta">
+      <div class="container" style="display:flex;flex-direction:column;align-items:center;gap:28px;">
+        <p class="display" style="color:var(--muted);font-size:28px;font-style:italic;text-align:center;">Found your moment? Be first to try it.</p>
+        <a href="#discovery" class="btn-primary">Get early access</a>
+      </div>
+    </section>
+
+    <!-- ── How to Use ── -->
+    <section class="how-to-use" id="how-to-use">
       <div class="container">
-        <div class="section-head">
-          <p class="section-label">How to use</p>
-          <h2 class="section-title"><span>Twenty seconds.</span> That's the whole ritual</h2>
-          <p class="section-intro">After the shower. Before work. When overwhelmed. Before going out. Before bed. One gesture — wrists, neck, chest — and you've already shifted.</p>
-        </div>
-        <div class="split-layout split-layout--narrow">
-          <div>
-            <p class="section-label">The steps</p>
-            <p class="split-quote" style="margin-top: 16px;">A ritual that works in your actual life.</p>
+        <div class="how-head">
+          <p class="label">How to use</p>
+          <div style="display:flex;flex-direction:column;gap:24px;">
+            <h2 class="display" style="font-size:clamp(34px,4vw,52px);line-height:1.1;"><span class="accent">Twenty seconds.</span> That's the whole ritual</h2>
+            <p class="body-text" style="max-width:680px;">After the shower. Before work. When overwhelmed. Before going out. Before bed. One gesture — wrists, neck, chest — and you've already shifted.</p>
           </div>
-          <div class="principles">
-            <div class="principle">
-              <p class="principle-num">01</p>
-              <div class="principle-body">
+        </div>
+
+        <div class="how-split">
+          <div class="how-left">
+            <p class="label">The steps</p>
+            <p class="italic-desc">A ritual that works in your actual life.</p>
+          </div>
+
+          <div class="steps">
+            <div class="step">
+              <p class="label" style="padding-top:4px;">01</p>
+              <div class="step-body">
                 <strong>Choose the moment you're in</strong>
                 <p>Not the scent note. Each oil is made for a specific feeling — you choose by how you want to feel.</p>
               </div>
             </div>
-            <div class="principle">
-              <p class="principle-num">02</p>
-              <div class="principle-body">
+            <div class="step">
+              <p class="label" style="padding-top:4px;">02</p>
+              <div class="step-body">
                 <strong>Apply to skin</strong>
                 <p>Wrists, neck, decolletage. Pulse points where the oil meets body heat and opens up.</p>
               </div>
             </div>
-            <div class="principle">
-              <p class="principle-num">03</p>
-              <div class="principle-body">
+            <div class="step">
+              <p class="label" style="padding-top:4px;">03</p>
+              <div class="step-body">
                 <strong>Let it bloom</strong>
-                <p>Top, heart, base — niche perfumery architecture that unfolds over hours. Intimate, never loud.</p>
-              </div>
-            </div>
-            <div class="principle">
-              <p class="principle-num">04</p>
-              <div class="principle-body">
-                <strong>Works in your real day</strong>
-                <p>No candles. No prep time. No separate ritual space. It fits inside the day you already have.</p>
+                <p>Top, heart, base — three layers of scent that unfold over 4-6 hours. Intimate, never loud.</p>
               </div>
             </div>
           </div>
@@ -779,46 +1020,59 @@
       </div>
     </section>
 
-    <!-- ── 6. DISCOVERY CTA ── -->
-    <section class="section cta" id="discovery">
+    <!-- ── Founder Strip ── -->
+    <div class="founder-strip">
+      <div class="container" style="display:flex;justify-content:center;">
+        <p>Created in Varkala, India. Natural oils with niche-grade fragrance compounds. Each formula built to shift how a moment feels — not just how skin looks.</p>
+      </div>
+    </div>
+
+    <!-- ── Discovery CTA ── -->
+    <section class="discovery" id="discovery">
       <div class="container">
-        <div class="cta-panel">
-          <div>
-            <p class="section-label">Coming soon — India, Varkala</p>
-            <h2 class="cta-title">The Discovery set</h2>
-            <p class="cta-copy">Udaya doesn't ask you to choose between fragrance, care, and emotional effect. It sits in the space between them.</p>
+        <div class="cta-panel" id="cta-panel">
+          <div class="cta-content">
+            <p class="label">Launching Summer 2026 — India, Varkala</p>
+            <div class="cta-text-group">
+              <h2 class="display" style="font-size:clamp(34px,4vw,52px);line-height:1.1;">The Discovery set</h2>
+              <p class="body-text">All five oils, 10ml each. Try every moment, find the one that becomes yours.</p>
+              <p class="cta-incentive">Waitlist gets early access + launch-day pricing</p>
+            </div>
           </div>
-          <form class="cta-form" id="waitlist-form">
-            <input class="cta-input" type="email" placeholder="your@email.com" aria-label="Join the Udaya waitlist" required>
-            <button class="cta-btn" type="submit">Notify me at launch</button>
+          <form class="cta-form" id="cta-form" onsubmit="handleSubmit(event)">
+            <input type="email" class="cta-input" placeholder="your@email.com" required aria-label="Email address">
+            <button type="submit" class="btn-primary" style="width:100%;">Get early access</button>
+            <p class="cta-fine-print">One email on launch day. No spam. Unsubscribe anytime.</p>
           </form>
+        </div>
+
+        <div class="thank-you" id="thank-you">
+          <h2 class="display">You're in.</h2>
+          <p class="body-text">We'll email you first when the Discovery set is ready — with early pricing.</p>
+          <a href="https://instagram.com/udaya.rituals" target="_blank" rel="noopener" class="btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            Follow @udaya.rituals
+          </a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ── FOOTER ── -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <span>UDAYA</span>
-        <a href="https://www.instagram.com/udaya.rituals" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="footer-ig">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
-        </a>
-      </div>
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="container footer">
+      <span>UDAYA</span>
       <span>Perfumed oils for how you want to feel</span>
       <span>India, Varkala</span>
     </div>
   </footer>
 
   <script>
-    // Waitlist — collects emails to localStorage + optional webhook
-    var WEBHOOK_URL = ''; // e.g. 'https://hooks.zapier.com/hooks/catch/...'
+    var WEBHOOK_URL = '';
 
-    document.getElementById('waitlist-form').addEventListener('submit', function (e) {
+    function handleSubmit(e) {
       e.preventDefault();
-      var input = this.querySelector('.cta-input');
-      var btn = this.querySelector('.cta-btn');
+      var input = document.querySelector('.cta-input');
       var email = input.value.trim();
       if (!email) return;
 
@@ -836,10 +1090,9 @@
         }).catch(function () {});
       }
 
-      btn.textContent = "You're on the list";
-      input.disabled = true;
-      btn.disabled = true;
-    });
+      document.getElementById('cta-panel').style.display = 'none';
+      document.getElementById('thank-you').classList.add('visible');
+    }
   </script>
 </body>
 </html>
