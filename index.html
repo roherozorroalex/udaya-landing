@@ -208,17 +208,20 @@
     }
 
     .hero-image {
-      width: 100%;
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
       height: clamp(320px, 36vw, 480px);
-      border-radius: 0;
       overflow: hidden;
-      background: linear-gradient(135deg, #1a1814 0%, #0d0c0a 100%);
+      background: var(--bg-soft);
     }
 
     .hero-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center 40%;
     }
 
     .signal-strip {
